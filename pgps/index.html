@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETP1</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+            padding: 28px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .image {
+            margin: 20px 0;
+            width: 100%;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3c9845;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background-color: #36a43f;
+            transform: scale(1.08);
+        }
+        .footer {
+            background-color: #ededed;
+            color: #333333;
+            font-size: 14px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .footer a {
+            color: #3c9845;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(60, 152, 69, 0.6);
+            }
+            70% {
+                transform: scale(1.08);
+                box-shadow: 0 0 0 12px rgba(60, 152, 69, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(60, 152, 69, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Image -->
+        <a href="https://lpz.alwaysupdatednews.site/pv-lpz/" class="image" data-utm-pass>
+            <img src="imagem.jpg" alt="Clickable Image">
+        </a>
+
+        <!-- Button -->
+        <a href="https://lpz.alwaysupdatednews.site/pv-lpz/" class="button" data-utm-pass>
+            Access The Free Presentation
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a> | <a href="return-policy.html">Return Policy</a></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var utmLinks = document.querySelectorAll("[data-utm-pass]");
+            utmLinks.forEach(function(link) {
+                link.addEventListener("click", function(event) {
+                    var currentUrl = new URL(window.location.href);
+                    var destinationUrl = new URL(this.href);
+                    var utmParams = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "subid", "subid2", "subid3", "src", "sck", "cmc_adid", "ttclid"];
+
+                    utmParams.forEach(function(param) {
+                        if (currentUrl.searchParams.has(param)) {
+                            destinationUrl.searchParams.set(param, currentUrl.searchParams.get(param));
+                        }
+                    });
+
+                    this.href = destinationUrl.toString();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
